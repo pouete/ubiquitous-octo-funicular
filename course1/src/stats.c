@@ -52,13 +52,14 @@ void print_statistics(unsigned char *array, unsigned int array_size){
 }
 
 unsigned char print_array(unsigned char *array, unsigned int array_size){
+  #ifdef VERBOSE
   unsigned int i;
   PRINTF(" Array : [");
   for ( i = 0; i < array_size; i++){
 
       PRINTF("[%d]=>%d ",i,array[i]);
-
   }
+  #endif
   PRINTF("\n");
   return 0;
 }
