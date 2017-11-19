@@ -11,7 +11,6 @@ https://github.com/pouete/ubiquitous-octo-funicular
 Some insight of the project itself :
 
 
-
 ## Compilation:
 
 A simple
