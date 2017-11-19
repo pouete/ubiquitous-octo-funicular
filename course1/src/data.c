@@ -28,7 +28,6 @@
 
 #include "data.h"
 #include "memory.h"
-#include <stdbool.h>
 
 
 uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base){
