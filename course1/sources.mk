@@ -13,9 +13,9 @@
 SOURCES =
 
 # Add your include paths to this variable
-INCLUDES=-I../include/common
+INCLUDES=-Iinclude/common
 
 ifeq ($(PLATFORM),MSP432)
-        INCLUDES += -I../include/msp432/ -I../include/CMSIS
+        INCLUDES += -Iinclude/msp432/ -Iinclude/CMSIS
 endif
 

@@ -2,10 +2,10 @@
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
  * Redistribution, modification or use of this software in source or binary
- * forms is permitted as long as the files maintain this copyright. Users are 
+ * forms is permitted as long as the files maintain this copyright. Users are
  * permitted to modify this and use it to learn about the field of embedded
  * software. Alex Fosdick and the University of Colorado are not liable for any
- * misuse of this material. 
+ * misuse of this material.
  *
  *****************************************************************************/
 /**
@@ -22,9 +22,23 @@
  */
 #include "memory.h"
 
+/* Use standard integer types with explicit width */
+#include <stdint.h>
+#include <stddef.h>
+#include <stdlib.h>
+
+
+
+#if defined ARMARCH
+#define WORDSIZE (sizeof(uint32_t))
+#else
+#define WORDSIZE (sizeof(uint64_t))
+#endif
+
 /***********************************************************
  Function Definitions
 ***********************************************************/
+
 void set_value(char * ptr, unsigned int index, char value){
   ptr[index] = value;
 }
@@ -48,3 +62,60 @@ void clear_all(char * ptr, unsigned int size){
   set_all(ptr, 0, size);
 }
 
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
+  uint8_t buffer[length];
+  uint8_t i;
+  for( i = 0; i <= length; i++){
+    buffer[i] = *(src + i) ;
+  }
+  for( i = 0; i <= length; i++){
+    *(dst + i) = buffer[i];
+  }
+  return dst;
+}
+
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
+  uint8_t i;
+  for( i = 0; i <= length; i++){
+    *(dst + i) = *(src + i) ;
+  }
+  return dst;
+}
+
+
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){
+  uint8_t i;
+  for( i = 0; i <= length; i++){
+    *(src + i) = value ;
+  }
+  return src;
+}
+
+uint8_t * my_memzero(uint8_t * src, size_t length){
+  uint8_t i;
+  for( i = 0; i <= length; i++){
+    *(src + i) = 0 ;
+  }
+  return src;
+}
+
+uint8_t * my_reverse(uint8_t * src, size_t length){
+  uint8_t buffer;
+  uint8_t i = 0;
+  while(i < length){
+    buffer = *(src + i);
+    *(src + i) = *(src + (length - 1));
+    *(src + (length - 1)) = buffer;
+    i++;
+    length--;
+  }
+  return src;
+}
+
+int32_t * reserve_words(size_t length){
+  return (int32_t *)malloc(length * WORDSIZE);
+}
+
+void free_words(uint32_t * src){
+  free(src);
+}

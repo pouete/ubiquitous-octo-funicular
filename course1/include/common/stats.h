@@ -32,7 +32,7 @@
  *
  * @return Zero  if the function was successfull, -1 else.
  */
-unsigned char print_statistics(unsigned char *array, unsigned int array_size);
+void print_statistics(unsigned char *array, unsigned int array_size);
 
 /**
  * @brief Prints the array

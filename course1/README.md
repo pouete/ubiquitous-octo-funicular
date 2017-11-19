@@ -10,19 +10,19 @@ https://github.com/pouete/effective-telegram.git
 
 Some insight of the project itself :
 
-The sort_array function is an in-place quickSort, saving memory.
-
-Most of the functions needs a sorted array as first input.
 
 
 ## Compilation:
 
+A simple
+`make `
 
-`gcc -o stats.out stats.c`
+will create a final binery with the needed variables to execute the course1.c test suit
 
-or
 
-`make stats`
+If you want the full debug and execute the test suite, you can launch :
+
+`make final EXTRA='-DVERBOSE'`
 
 
 ## The author:
